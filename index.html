@@ -1,0 +1,841 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Flora — Stunning Bouquets for Every Occasion</title>
+    <meta
+      name="description"
+      content="Flora is a flower studio crafting stunning bouquets for every occasion — from bestsellers to custom arrangements."
+    />
+    <link rel="icon" type="image/svg+xml" href="images/favicon.svg" />
+    <link rel="alternate icon" href="images/favicon.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Hanuman:wght@400&family=Roboto:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="css/modern-normalize.css" />
+    <link rel="stylesheet" href="css/aos.css" />
+    <link rel="stylesheet" href="css/styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container header__inner">
+        <div class="header__brand">
+          <a href="#top" class="logo" aria-label="Flora — home">
+            <svg viewBox="0 0 84 36" aria-hidden="true">
+              <use href="images/icons.svg#icon-logo"></use>
+            </svg>
+          </a>
+        </div>
+
+        <nav class="nav" id="nav">
+          <div class="nav__top">
+            <a href="#top" class="logo" aria-label="Flora — home">
+              <svg viewBox="0 0 84 36" aria-hidden="true">
+                <use href="images/icons.svg#icon-logo"></use>
+              </svg>
+            </a>
+            <button
+              type="button"
+              class="nav__close"
+              id="nav-close"
+              aria-label="Close menu"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <use href="images/icons.svg#icon-close"></use>
+              </svg>
+            </button>
+          </div>
+
+          <ul class="nav__list">
+            <li><a class="link" href="#about">About Us</a></li>
+            <li><a class="link" href="#bestsellers">Bestsellers</a></li>
+            <li><a class="link" href="#bouquets">Bouquets</a></li>
+            <li><a class="link" href="#feedback">Feedback</a></li>
+            <li><a class="link" href="#contact">Contacts</a></li>
+          </ul>
+
+          <div class="nav__actions">
+            <a href="#bouquets" class="btn nav__cta">Explore Bouquets</a>
+          </div>
+        </nav>
+
+        <button
+          type="button"
+          class="burger"
+          id="burger"
+          aria-label="Open menu"
+          aria-expanded="false"
+          aria-controls="nav"
+        >
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+          <span class="burger__line"></span>
+        </button>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container">
+          <div class="hero__inner">
+            <h1 class="hero__title" data-aos="fade-up">
+              Brighten Your Day with Our Stunning Bouquets
+            </h1>
+            <p class="hero__text">
+              At Flora, we believe that every occasion deserves a beautiful
+              bouquet. Our expertly crafted arrangements are designed to bring
+              joy and elegance to your celebrations.
+            </p>
+            <a href="#bestsellers" class="btn hero__cta"
+              >Explore Our Bestsellers</a
+            >
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container about__inner">
+          <div class="about__content" data-aos="fade-right">
+            <span class="about__icon">
+              <svg viewBox="0 0 96 85" aria-hidden="true">
+                <use href="images/icons.svg#icon-flower"></use>
+              </svg>
+            </span>
+            <h2 class="section__heading">Our Passion for Floral Artistry</h2>
+            <p class="about__text">
+              At Flora, we believe that every bouquet tells a story. Our team
+              meticulously crafts each arrangement, blending creativity with the
+              freshest blooms to create stunning pieces for every occasion.
+            </p>
+          </div>
+          <img
+            class="about__image"
+            src="images/about@1x.jpg"
+            srcset="images/about@1x.jpg 1x, images/about@2x.jpg 2x"
+            width="450"
+            height="300"
+            alt="Florist arranging fresh flowers on a wooden table"
+            data-aos="fade-left"
+          />
+        </div>
+      </section>
+
+      <section id="bestsellers" class="section">
+        <div class="container">
+          <h2 class="section__heading section__heading--spaced">
+            Top-Selling Bouquets
+          </h2>
+
+          <ul class="slider hide-scrollbar" id="bestsellers-slider">
+            <li class="product-card" data-aos="fade-up" data-aos-delay="60">
+              <img
+                class="product-card__image"
+                src="images/spring-elegance@1x.jpg"
+                srcset="images/spring-elegance@1x.jpg 1x, images/spring-elegance@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Spring Elegance bouquet with pastel roses and greenery"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Spring Elegance</span>
+                <span class="product-card__price">$35</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="120">
+              <img
+                class="product-card__image"
+                src="images/berry-chic-1@1x.jpg"
+                srcset="images/berry-chic-1@1x.jpg 1x, images/berry-chic-1@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Berry Chic bouquet with deep red and pink blooms"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Berry Chic</span>
+                <span class="product-card__price">$40</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="180">
+              <img
+                class="product-card__image"
+                src="images/lavender-dream@1x.jpg"
+                srcset="images/lavender-dream@1x.jpg 1x, images/lavender-dream@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Lavender Dream bouquet with purple lavender stems"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Lavender Dream</span>
+                <span class="product-card__price">$55</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="0">
+              <img
+                class="product-card__image"
+                src="images/berry-chic-2@1x.png"
+                srcset="images/berry-chic-2@1x.png 1x, images/berry-chic-2@2x.png 2x"
+                width="350"
+                height="263"
+                alt="Berry Chic bouquet with lavender, lisianthus, and roses"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Berry Chic</span>
+                <p class="product-card__desc">
+                  Bouquet with lavender, lisianthus, and roses — ideal for those
+                  who love deep hues and gentle fragrance.
+                </p>
+                <span class="product-card__price">$55</span>
+              </div>
+            </li>
+          </ul>
+
+          <div class="slider__controls">
+            <ul class="slider__dots" id="bestsellers-dots">
+              <li>
+                <button
+                  type="button"
+                  class="slider__dot is-active"
+                  aria-label="Go to slide 1"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="slider__dot"
+                  aria-label="Go to slide 2"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="slider__dot"
+                  aria-label="Go to slide 3"
+                ></button>
+              </li>
+              <li>
+                <button
+                  type="button"
+                  class="slider__dot"
+                  aria-label="Go to slide 4"
+                ></button>
+              </li>
+            </ul>
+            <div class="slider__arrows">
+              <button
+                type="button"
+                class="icon-btn"
+                id="bestsellers-prev"
+                aria-label="Previous"
+              >
+                <svg aria-hidden="true">
+                  <use href="images/icons.svg#icon-arrow-left"></use>
+                </svg>
+              </button>
+              <button
+                type="button"
+                class="icon-btn"
+                id="bestsellers-next"
+                aria-label="Next"
+              >
+                <svg aria-hidden="true">
+                  <use href="images/icons.svg#icon-arrow-right"></use>
+                </svg>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="bouquets" class="section bouquets">
+        <div class="container bouquets__inner">
+          <div class="bouquets__intro" data-aos="fade-up">
+            <h2 class="section__heading">Bouquets</h2>
+            <p>Explore our stunning selection of fresh flower bouquets.</p>
+          </div>
+
+          <ul class="bouquets__grid">
+            <li class="product-card" data-aos="fade-up" data-aos-delay="60">
+              <img
+                class="product-card__image"
+                src="images/peach-meadow@1x.jpg"
+                srcset="images/peach-meadow@1x.jpg 1x, images/peach-meadow@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Peach Meadow bouquet with soft peach flowers"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Peach Meadow</span>
+                <span class="product-card__price">$55</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="120">
+              <img
+                class="product-card__image"
+                src="images/blush-romance@1x.jpg"
+                srcset="images/blush-romance@1x.jpg 1x, images/blush-romance@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Blush Romance bouquet with soft pink roses"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Blush Romance</span>
+                <span class="product-card__price">$34</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="180">
+              <img
+                class="product-card__image"
+                src="images/pastel-garden@1x.jpg"
+                srcset="images/pastel-garden@1x.jpg 1x, images/pastel-garden@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Pastel Garden bouquet with mixed pastel blooms"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Pastel Garden</span>
+                <span class="product-card__price">$40</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="0">
+              <img
+                class="product-card__image"
+                src="images/tulip-charm@1x.jpg"
+                srcset="images/tulip-charm@1x.jpg 1x, images/tulip-charm@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Tulip Charm bouquet with colourful tulips"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Tulip Charm</span>
+                <span class="product-card__price">$61</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="60">
+              <img
+                class="product-card__image"
+                src="images/berry-bloom@1x.jpg"
+                srcset="images/berry-bloom@1x.jpg 1x, images/berry-bloom@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Berry Bloom bouquet with deep berry-toned flowers"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Berry Bloom</span>
+                <span class="product-card__price">$32</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="120">
+              <img
+                class="product-card__image"
+                src="images/sweet-whisper@1x.jpg"
+                srcset="images/sweet-whisper@1x.jpg 1x, images/sweet-whisper@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Sweet Whisper bouquet with delicate white flowers"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Sweet Whisper</span>
+                <span class="product-card__price">$40</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="180">
+              <img
+                class="product-card__image"
+                src="images/field-joy@1x.jpg"
+                srcset="images/field-joy@1x.jpg 1x, images/field-joy@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Field Joy bouquet with wildflowers"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Field Joy</span>
+                <span class="product-card__price">$49</span>
+              </div>
+            </li>
+            <li class="product-card" data-aos="fade-up" data-aos-delay="0">
+              <img
+                class="product-card__image"
+                src="images/soft-bloom@1x.jpg"
+                srcset="images/soft-bloom@1x.jpg 1x, images/soft-bloom@2x.jpg 2x"
+                width="350"
+                height="263"
+                alt="Soft Bloom bouquet with muted pastel roses"
+              />
+              <div class="product-card__body">
+                <span class="product-card__name">Soft Bloom</span>
+                <span class="product-card__price">$37</span>
+              </div>
+            </li>
+          </ul>
+
+          <button type="button" class="btn btn--block bouquets__more">
+            Show More
+          </button>
+        </div>
+      </section>
+
+      <section id="catalog" class="section catalog">
+        <div class="container">
+          <div class="catalog__intro" data-aos="fade-up">
+            <h2 class="section__heading">Live Product Catalog</h2>
+            <p>
+              Browse items pulled live from a public product API &mdash;
+              search, filter by category, and load more. This section
+              demonstrates the store&rsquo;s future storefront, ready to be
+              connected to Flora&rsquo;s own backend.
+            </p>
+          </div>
+
+          <form class="catalog__controls" id="catalog-form" role="search">
+            <div class="catalog__field">
+              <label class="visually-hidden" for="catalog-search"
+                >Search products</label
+              >
+              <input
+                type="search"
+                id="catalog-search"
+                name="search"
+                class="catalog__input"
+                placeholder="Search products&hellip;"
+                autocomplete="off"
+              />
+            </div>
+            <div class="catalog__field">
+              <label class="visually-hidden" for="catalog-category"
+                >Category</label
+              >
+              <select
+                id="catalog-category"
+                name="category"
+                class="catalog__select"
+              >
+                <option value="">All categories</option>
+              </select>
+            </div>
+          </form>
+
+          <p
+            class="catalog__status"
+            id="catalog-status"
+            role="status"
+            aria-live="polite"
+          ></p>
+
+          <ul class="bouquets__grid catalog__grid" id="catalog-grid"></ul>
+
+          <button
+            type="button"
+            class="btn btn--block bouquets__more"
+            id="catalog-load-more"
+            hidden
+          >
+            Load More
+          </button>
+        </div>
+      </section>
+
+      <section id="feedback" class="section">
+        <div class="container">
+          <h2
+            class="section__heading section__heading--spaced section__heading--center"
+          >
+            What our clients say
+          </h2>
+
+          <ul class="slider hide-scrollbar" id="feedback-slider">
+            <li class="testimonial-card" data-aos="fade-up" data-aos-delay="60">
+              <div>
+                <p class="testimonial-card__quote">
+                  &ldquo;Flora made my anniversary unforgettable with their
+                  beautiful arrangement!&rdquo;
+                </p>
+              </div>
+              <span class="testimonial-card__name">Emma T.</span>
+            </li>
+            <li
+              class="testimonial-card"
+              data-aos="fade-up"
+              data-aos-delay="120"
+            >
+              <div>
+                <p class="testimonial-card__quote">
+                  Absolutely stunning bouquet! It looked even better than the
+                  photo and arrived right on time.
+                </p>
+              </div>
+              <span class="testimonial-card__name">Daniel R.</span>
+            </li>
+            <li
+              class="testimonial-card"
+              data-aos="fade-up"
+              data-aos-delay="180"
+            >
+              <div>
+                <p class="testimonial-card__quote">
+                  The service was exceptional, and the flowers were fresh!
+                </p>
+              </div>
+              <span class="testimonial-card__name">Olivia M.</span>
+            </li>
+            <li class="testimonial-card" data-aos="fade-up" data-aos-delay="0">
+              <div>
+                <ul class="testimonial-card__stars" aria-hidden="true">
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                </ul>
+                <p class="testimonial-card__quote">
+                  Ordered a last-minute gift and was amazed by how fast and
+                  professional the delivery was. Highly recommend!
+                </p>
+              </div>
+              <span class="testimonial-card__name">Julia K.</span>
+            </li>
+            <li class="testimonial-card" data-aos="fade-up" data-aos-delay="60">
+              <div>
+                <ul class="testimonial-card__stars" aria-hidden="true">
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                </ul>
+                <p class="testimonial-card__quote">
+                  Every flower was perfect. You can feel the care and love in
+                  every bouquet.
+                </p>
+              </div>
+              <span class="testimonial-card__name">Mark S.</span>
+            </li>
+            <li
+              class="testimonial-card"
+              data-aos="fade-up"
+              data-aos-delay="120"
+            >
+              <div>
+                <ul class="testimonial-card__stars" aria-hidden="true">
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                  <li>
+                    <svg><use href="images/icons.svg#icon-star"></use></svg>
+                  </li>
+                </ul>
+                <p class="testimonial-card__quote">
+                  Flora helped make my friend&rsquo;s birthday extra special.
+                  She was blown away by the flowers!
+                </p>
+              </div>
+              <span class="testimonial-card__name">Natalie V.</span>
+            </li>
+          </ul>
+
+          <div class="slider__arrows slider__arrows--end">
+            <button
+              type="button"
+              class="icon-btn"
+              id="feedback-prev"
+              aria-label="Previous"
+            >
+              <svg aria-hidden="true">
+                <use href="images/icons.svg#icon-arrow-left"></use>
+              </svg>
+            </button>
+            <button
+              type="button"
+              class="icon-btn"
+              id="feedback-next"
+              aria-label="Next"
+            >
+              <svg aria-hidden="true">
+                <use href="images/icons.svg#icon-arrow-right"></use>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" class="section">
+        <div class="container">
+          <div class="contact__row">
+            <div class="contact__intro" data-aos="fade-right">
+              <span class="contact__eyebrow">Connect</span>
+              <h2 class="section__heading">Get in Touch</h2>
+              <p>
+                We&rsquo;re here to assist you with all your floral needs and
+                inquiries.
+              </p>
+              <button
+                type="button"
+                class="btn"
+                id="open-order-modal"
+                data-modal-open
+              >
+                Request a Custom Bouquet
+              </button>
+            </div>
+
+            <ul class="contact__list">
+              <li class="contact__item">
+                <svg aria-hidden="true">
+                  <use href="images/icons.svg#icon-phone"></use>
+                </svg>
+                <div class="contact__item-body">
+                  <span class="contact__item-title">Phone</span>
+                  <a class="contact__item-value" href="tel:+15551234567"
+                    >+1 (555) 123-4567</a
+                  >
+                </div>
+              </li>
+              <li class="contact__item">
+                <svg aria-hidden="true">
+                  <use href="images/icons.svg#icon-map"></use>
+                </svg>
+                <div class="contact__item-body">
+                  <span class="contact__item-title">Store</span>
+                  <span class="contact__item-value"
+                    >456 Floral Ave, Sydney NSW 2000 AU</span
+                  >
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <img
+            class="contact__banner"
+            src="images/contact-banner@1x.jpg"
+            srcset="images/contact-banner@1x.jpg 1x, images/contact-banner@2x.jpg 2x"
+            width="800"
+            height="450"
+            alt="Flora storefront with a display of fresh bouquets"
+          />
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container">
+        <div class="footer__top">
+          <div class="footer__brand">
+            <a href="#top" class="footer__logo" aria-label="Flora — home">
+              <svg viewBox="0 0 84 36" aria-hidden="true">
+                <use href="images/icons.svg#icon-logo"></use>
+              </svg>
+            </a>
+          </div>
+
+          <ul class="footer__nav">
+            <li><a class="link" href="#about">About Us</a></li>
+            <li><a class="link" href="#bestsellers">Bestsellers</a></li>
+            <li><a class="link" href="#bouquets">Bouquets</a></li>
+            <li><a class="link" href="#feedback">Feedback</a></li>
+            <li><a class="link" href="#contact">Contacts</a></li>
+          </ul>
+
+          <ul class="footer__socials">
+            <li>
+              <a href="#top" class="social-link" aria-label="Facebook">
+                <svg aria-hidden="true">
+                  <use href="images/icons.svg#icon-facebook"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#top" class="social-link" aria-label="Instagram">
+                <svg aria-hidden="true">
+                  <use href="images/icons.svg#icon-instagram"></use>
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#top" class="social-link" aria-label="X">
+                <svg aria-hidden="true">
+                  <use href="images/icons.svg#icon-x"></use>
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </div>
+
+        <div class="footer__subscribe-row">
+          <div class="footer__subscribe-text">
+            <span class="footer__subscribe-title">Stay in the loop</span>
+            <p>Get fresh bouquet ideas and offers in your inbox.</p>
+          </div>
+          <form
+            class="footer__subscribe"
+            id="subscribe-form"
+            novalidate
+          >
+            <label class="visually-hidden" for="subscribe-email"
+              >Email address</label
+            >
+            <input
+              type="email"
+              id="subscribe-email"
+              name="email"
+              class="footer__subscribe-input"
+              placeholder="Enter your email"
+              required
+            />
+            <button type="submit" class="btn footer__subscribe-btn">
+              Subscribe
+            </button>
+          </form>
+          <p
+            class="footer__subscribe-status"
+            id="subscribe-status"
+            role="status"
+            aria-live="polite"
+          ></p>
+        </div>
+
+        <div class="footer__bottom">
+          <p class="footer__copy">© 2025 Flora. All rights reserved.</p>
+        </div>
+      </div>
+    </footer>
+
+    <div class="modal-backdrop" id="modal-backdrop">
+      <div
+        class="modal"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="modal-title"
+      >
+        <button
+          type="button"
+          class="modal__close"
+          id="modal-close"
+          aria-label="Close dialog"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <use href="images/icons.svg#icon-close"></use>
+          </svg>
+        </button>
+
+        <h3 class="modal__title" id="modal-title">Request a Bouquet</h3>
+        <p class="modal__subtitle" id="modal-subtitle">
+          Tell us what you have in mind and we&rsquo;ll get back to you.
+        </p>
+
+        <form class="order-form" id="order-form" novalidate>
+          <div class="order-form__field">
+            <label for="order-name">Full name</label>
+            <input
+              type="text"
+              id="order-name"
+              name="name"
+              placeholder="Jane Doe"
+              required
+            />
+          </div>
+
+          <div class="order-form__field">
+            <label for="order-email">Email</label>
+            <input
+              type="email"
+              id="order-email"
+              name="email"
+              placeholder="jane@example.com"
+              required
+            />
+          </div>
+
+          <div class="order-form__field">
+            <label for="order-phone">Phone</label>
+            <input
+              type="tel"
+              id="order-phone"
+              name="phone"
+              placeholder="+1 (555) 123-4567"
+            />
+          </div>
+
+          <div class="order-form__field">
+            <label for="order-message">Message</label>
+            <textarea
+              id="order-message"
+              name="message"
+              rows="3"
+              placeholder="Tell us about the occasion&hellip;"
+            ></textarea>
+          </div>
+
+          <label class="checkbox" for="order-agree">
+            <input
+              type="checkbox"
+              id="order-agree"
+              name="agreement"
+              class="checkbox__input visually-hidden"
+              required
+            />
+            <span class="checkbox__box" aria-hidden="true">
+              <svg class="checkbox__icon" viewBox="0 0 16 16">
+                <use href="images/icons.svg#icon-check"></use>
+              </svg>
+            </span>
+            <span class="checkbox__label"
+              >I agree to the
+              <a href="#contact" class="link">licensing agreement</a></span
+            >
+          </label>
+
+          <p
+            class="order-form__status"
+            id="order-form-status"
+            role="status"
+            aria-live="polite"
+          ></p>
+
+          <button type="submit" class="btn btn--block order-form__submit">
+            Send Request
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <script src="js/vendor/aos.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.7.9/dist/axios.min.js"></script>
+    <script src="js/script.js"></script>
+    <script src="js/modal.js"></script>
+    <script src="js/catalog.js"></script>
+  </body>
+</html>

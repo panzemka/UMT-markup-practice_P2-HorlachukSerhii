@@ -77,7 +77,7 @@
   });
 
   if (orderForm) {
-    orderForm.addEventListener("submit", async (event) => {
+    orderForm.addEventListener("submit", (event) => {
       event.preventDefault();
 
       const agree = document.getElementById("order-agree");
@@ -87,27 +87,9 @@
         return;
       }
 
-      const submitBtn = orderForm.querySelector('[type="submit"]');
-      const payload = {
-        title: orderForm.name.value,
-      };
-
-      if (submitBtn) submitBtn.disabled = true;
-      orderStatus.textContent = "Sending your request...";
-      orderStatus.className = "order-form__status";
-
-      try {
-        await axios.post("https://dummyjson.com/products/add", payload);
-        orderStatus.textContent = `Thanks, ${orderForm.name.value}! We received your request and will reach out soon.`;
-        orderStatus.className = "order-form__status order-form__status--success";
-        orderForm.reset();
-      } catch (error) {
-        orderStatus.textContent =
-          "Something went wrong while sending your request. Please try again.";
-        orderStatus.className = "order-form__status order-form__status--error";
-      } finally {
-        if (submitBtn) submitBtn.disabled = false;
-      }
+      orderStatus.textContent = `Thanks, ${orderForm.name.value}! We received your request and will reach out soon.`;
+      orderStatus.className = "order-form__status order-form__status--success";
+      orderForm.reset();
     });
   }
 

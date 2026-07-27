@@ -1,24 +1,25 @@
 (() => {
   "use strict";
 
-  const API_BASE = "https://dummyjson.com";
+  const API_BASE = "http://localhost:3000";
 
   const grid = document.getElementById("catalog-grid");
   const statusEl = document.getElementById("catalog-status");
   const loadMoreBtn = document.getElementById("catalog-load-more");
   const searchInput = document.getElementById("catalog-search");
-  const categorySelect = document.getElementById("catalog-category");
+  const filterSelect = document.getElementById("catalog-filter");
   const form = document.getElementById("catalog-form");
 
-  if (!grid || !loadMoreBtn || !searchInput || !categorySelect) return;
+  if (!grid || !loadMoreBtn || !searchInput || !filterSelect) return;
 
   const state = {
     search: "",
-    category: "",
-    skip: 0,
-    limit: 8,
-    total: 0,
-    loading: false,
+    filter: "",
+    page: 0,
+    perPage: 8,
+    all: [],
+    filtered: [],
+    loaded: false,
   };
 
   const escapeHtml = (value) =>
@@ -37,18 +38,20 @@
     };
   };
 
-  const cardTemplate = (product) => {
-    const name = escapeHtml(product.title);
-    const desc = escapeHtml(
-      (product.description || "").length > 90
-        ? `${product.description.slice(0, 90)}...`
-        : product.description || "",
-    );
-    const image = escapeHtml(product.thumbnail || "");
-    const price = Number(product.price || 0).toFixed(2);
+  const resolvePhotoUrl = (photoURL) => {
+    if (!photoURL) return "";
+    return /^https?:\/\//.test(photoURL) ? photoURL : `${API_BASE}${photoURL}`;
+  };
+
+  const cardTemplate = (bouquet) => {
+    const name = escapeHtml(bouquet.title);
+    const desc = escapeHtml(bouquet.description || "");
+    const image = escapeHtml(resolvePhotoUrl(bouquet.photoURL));
+    const price = Number(bouquet.price || 0).toFixed(2);
+    const isFavorite = Boolean(bouquet.favorite);
 
     return `
-      <li class="product-card" data-id="${product.id}">
+      <li class="product-card" data-id="${bouquet.id}">
         <img
           class="product-card__image"
           src="${image}"
@@ -59,13 +62,24 @@
           <span class="product-card__name">${name}</span>
           <p class="product-card__desc">${desc}</p>
           <span class="product-card__price">$${price}</span>
-          <button
-            type="button"
-            class="btn btn--block catalog-card__order"
-            data-order-product="${name}"
-          >
-            Order Now
-          </button>
+          <div class="catalog-card__actions">
+            <button
+              type="button"
+              class="btn btn--block catalog-card__order"
+              data-order-product="${name}"
+            >
+              Order Now
+            </button>
+            <button
+              type="button"
+              class="catalog-card__favorite${isFavorite ? " is-active" : ""}"
+              data-favorite-toggle="${bouquet.id}"
+              aria-pressed="${isFavorite}"
+              aria-label="${isFavorite ? "Remove from favorites" : "Add to favorites"}"
+            >
+              &hearts;
+            </button>
+          </div>
         </div>
       </li>
     `;
@@ -78,113 +92,107 @@
       : "catalog__status";
   };
 
-  const updateLoadMoreVisibility = () => {
-    const noMoreLeft = state.skip + state.limit >= state.total;
-    loadMoreBtn.hidden = state.total === 0 || noMoreLeft;
+  const applyFilters = () => {
+    const search = state.search.toLowerCase();
+    state.filtered = state.all.filter((bouquet) => {
+      const matchesSearch =
+        !search ||
+        bouquet.title.toLowerCase().includes(search) ||
+        (bouquet.description || "").toLowerCase().includes(search);
+      const matchesFavorite = state.filter !== "favorite" || bouquet.favorite;
+      return matchesSearch && matchesFavorite;
+    });
   };
 
-  const setLoadMoreLoading = (loading) => {
-    loadMoreBtn.disabled = loading;
-    loadMoreBtn.textContent = loading ? "Loading..." : "Load More";
-  };
+  const render = () => {
+    const end = (state.page + 1) * state.perPage;
+    const visible = state.filtered.slice(0, end);
 
-  const buildRequest = () => {
-    const params = { limit: state.limit, skip: state.skip };
-    if (state.search) {
-      return { url: `${API_BASE}/products/search`, params: { ...params, q: state.search } };
+    grid.innerHTML = "";
+
+    if (!visible.length) {
+      grid.insertAdjacentHTML(
+        "beforeend",
+        `<li class="catalog__empty">No bouquets found. Try a different search or filter.</li>`,
+      );
+      setStatus("No bouquets found.", false);
+    } else {
+      grid.insertAdjacentHTML("beforeend", visible.map(cardTemplate).join(""));
+      setStatus(`Showing ${visible.length} of ${state.filtered.length} bouquets.`, false);
     }
-    if (state.category) {
-      return {
-        url: `${API_BASE}/products/category/${encodeURIComponent(state.category)}`,
-        params,
-      };
-    }
-    return { url: `${API_BASE}/products`, params };
+
+    loadMoreBtn.hidden = state.filtered.length === 0 || end >= state.filtered.length;
   };
 
-  const fetchProducts = async ({ reset }) => {
-    if (state.loading) return;
-    state.loading = true;
-    setLoadMoreLoading(true);
-    if (reset) setStatus("Loading products...", false);
+  const resetAndRender = () => {
+    state.page = 0;
+    applyFilters();
+    render();
+  };
 
+  const fetchBouquets = async () => {
+    setStatus("Loading bouquets...", false);
     try {
-      const { url, params } = buildRequest();
-      const { data } = await axios.get(url, { params });
-      const products = Array.isArray(data.products) ? data.products : [];
-
-      state.total = Number(data.total) || 0;
-
-      if (reset) grid.innerHTML = "";
-
-      if (!products.length) {
-        if (reset) {
-          grid.insertAdjacentHTML(
-            "beforeend",
-            `<li class="catalog__empty">No products found. Try a different search or category.</li>`,
-          );
-        }
-        setStatus(reset ? "No products found." : "No more products to load.", false);
-      } else {
-        grid.insertAdjacentHTML("beforeend", products.map(cardTemplate).join(""));
-        setStatus(`Showing ${state.skip + products.length} of ${state.total} products.`, false);
-      }
-
-      updateLoadMoreVisibility();
+      const { data } = await axios.get(`${API_BASE}/api/bouquets`);
+      state.all = Array.isArray(data) ? data : [];
+      state.loaded = true;
+      resetAndRender();
     } catch (error) {
       setStatus(
         "Couldn't load the catalog right now. Please try again in a moment.",
         true,
       );
       loadMoreBtn.hidden = true;
-    } finally {
-      state.loading = false;
-      setLoadMoreLoading(false);
     }
   };
 
-  const populateCategories = async () => {
-    try {
-      const { data } = await axios.get(`${API_BASE}/products/categories`);
-      const categories = Array.isArray(data) ? data : [];
-      const html = categories
-        .map((category) => {
-          const slug = typeof category === "string" ? category : category.slug;
-          const label = typeof category === "string" ? category : category.name;
-          return `<option value="${escapeHtml(slug)}">${escapeHtml(label)}</option>`;
-        })
-        .join("");
-      categorySelect.insertAdjacentHTML("beforeend", html);
-    } catch (error) {}
-  };
+  const toggleFavorite = async (id, button) => {
+    const bouquet = state.all.find((b) => b.id === id);
+    if (!bouquet) return;
 
-  const resetAndFetch = () => {
-    state.skip = 0;
-    fetchProducts({ reset: true });
+    const nextFavorite = !bouquet.favorite;
+    button.disabled = true;
+
+    try {
+      const { data } = await axios.patch(`${API_BASE}/api/bouquets/${id}/favorite`, {
+        favorite: nextFavorite,
+      });
+      bouquet.favorite = data.favorite;
+      applyFilters();
+      render();
+    } catch (error) {
+      button.disabled = false;
+    }
   };
 
   searchInput.addEventListener(
     "input",
     debounce(() => {
       state.search = searchInput.value.trim();
-      resetAndFetch();
-    }, 400),
+      resetAndRender();
+    }, 300),
   );
 
-  categorySelect.addEventListener("change", () => {
-    state.category = categorySelect.value;
-    resetAndFetch();
+  filterSelect.addEventListener("change", () => {
+    state.filter = filterSelect.value;
+    resetAndRender();
   });
 
   loadMoreBtn.addEventListener("click", () => {
-    state.skip += state.limit;
-    fetchProducts({ reset: false });
+    state.page += 1;
+    render();
+  });
+
+  grid.addEventListener("click", (event) => {
+    const favoriteBtn = event.target.closest("[data-favorite-toggle]");
+    if (favoriteBtn) {
+      toggleFavorite(favoriteBtn.getAttribute("data-favorite-toggle"), favoriteBtn);
+    }
   });
 
   if (form) {
     form.addEventListener("submit", (event) => event.preventDefault());
   }
 
-  populateCategories();
-  fetchProducts({ reset: true });
+  fetchBouquets();
 })();

@@ -383,39 +383,38 @@
       <section id="catalog" class="section catalog">
         <div class="container">
           <div class="catalog__intro" data-aos="fade-up">
-            <h2 class="section__heading">Live Product Catalog</h2>
+            <h2 class="section__heading">Full Bouquet Catalog</h2>
             <p>
-              Browse items pulled live from a public product API &mdash;
-              search, filter by category, and load more. This section
-              demonstrates the store&rsquo;s future storefront, ready to be
-              connected to Flora&rsquo;s own backend.
+              Browse the whole Flora catalog &mdash; search, mark favorites,
+              and load more. Powered live by Flora&rsquo;s own REST API.
             </p>
           </div>
 
           <form class="catalog__controls" id="catalog-form" role="search">
             <div class="catalog__field">
               <label class="visually-hidden" for="catalog-search"
-                >Search products</label
+                >Search bouquets</label
               >
               <input
                 type="search"
                 id="catalog-search"
                 name="search"
                 class="catalog__input"
-                placeholder="Search products&hellip;"
+                placeholder="Search bouquets&hellip;"
                 autocomplete="off"
               />
             </div>
             <div class="catalog__field">
-              <label class="visually-hidden" for="catalog-category"
-                >Category</label
+              <label class="visually-hidden" for="catalog-filter"
+                >Filter</label
               >
               <select
-                id="catalog-category"
-                name="category"
+                id="catalog-filter"
+                name="filter"
                 class="catalog__select"
               >
-                <option value="">All categories</option>
+                <option value="">All bouquets</option>
+                <option value="favorite">Favorites only</option>
               </select>
             </div>
           </form>

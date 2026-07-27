@@ -1062,6 +1062,15 @@ button {
   display: none;
 }
 
+.catalog__load-more {
+  width: 100%;
+  margin-top: 8px;
+}
+
+.catalog__load-more[hidden] {
+  display: none;
+}
+
 .footer__subscribe-row {
   display: flex;
   flex-wrap: wrap;
